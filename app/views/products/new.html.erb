@@ -1,0 +1,25 @@
+<%= form_tag '/create', method: :post do %>
+<div>
+  <%= label_tag :name, "enter name of product" %>
+  <%= text_field_tag :name %>
+</div>
+
+<div>
+  <%= label_tag :price, "enter price of product" %>
+  <%= text_field_tag :price %>
+</div>
+
+<div>
+  <%= label_tag :image, "enter image URL of product" %>
+  <%= text_field_tag :image %>
+</div>
+<div>
+  <%= label_tag :description, "enter description of product" %>
+  <%= text_field_tag :description %>
+</div>
+
+<div>
+  <%= submit_tag "click here if you're awesome" %>
+</div>
+
+<% end %>
