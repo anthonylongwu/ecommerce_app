@@ -1,7 +1,11 @@
 class ProductsController < ApplicationController
   
   def index
+    if params[:view] == "discounted"
+      @products = Product.where("price < ?", 50)
+    else
     @products = Product.all
+    end
   end
 
   def new

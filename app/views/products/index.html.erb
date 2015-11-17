@@ -1,8 +1,10 @@
+<%= link_to "Show Discounted Items", "/products?view=discounted"%>
+
 <% @products.each do |product|%>
-  <h3>Name: <%= link_to product.name, "/products/#{product.id}" %> </h3>
-  <p>Price: <%=product.price%></p>
-  <p>Description: <%=product.description%></p>
-  <p> <img src="<%=product.image%>"></p>
+  <h2>Name: <%= link_to product.name, "/products/#{product.id}" %> </h2>
+  <h4>Price: $<%=product.price%></h4>
+  <h4>Description: <%=product.description%></h4>
+  <h4> <img src="<%=product.image%>"></h4>
   
 <%end%>
 
