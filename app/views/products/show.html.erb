@@ -1,9 +1,9 @@
 <h2>Product</h2>
 <h4><%= @product.sale_message%></h4>
 <h4><%= @product.name %></p>
-<h4>Price $<%= @product.price %></h4>
-<h4>Tax $<%= @product.tax %></h4>
-<h4>Total Price $<%= @product.total %></h4>
+<h4>Price <%= number_to_currency(@product.price) %></h4>
+<h4>Tax <%= number_to_currency(@product.tax) %></h4>
+<h4>Total Price <%= number_to_currency(@product.total) %></h4>
 <h4><%= @product.description %></h4>
 <h4><img src="<%= @product.image %>"></h4>
 

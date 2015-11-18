@@ -1,7 +1,6 @@
 class Product < ActiveRecord::Base
 
-  def sale_message
-    
+  def sale_message   
       if price.to_i < 50
         return "Discount Item!"
       else 
@@ -19,8 +18,4 @@ class Product < ActiveRecord::Base
     total_price = price.to_i + tax
     return total_price
   end
-
-
-
-
 end
