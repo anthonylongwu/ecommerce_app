@@ -14,13 +14,13 @@
 ActiveRecord::Schema.define(version: 20151118023237) do
 
   create_table "products", force: :cascade do |t|
-    t.string   "name"
-    t.decimal  "price",       precision: 10, scale: 2
-    t.string   "image"
-    t.text     "description"
-    t.datetime "created_at",                                          null: false
-    t.datetime "updated_at",                                          null: false
-    t.boolean  "in_stock",                             default: true
+    t.string   "name",        limit: 255
+    t.decimal  "price",                     precision: 6, scale: 2
+    t.string   "image",       limit: 255
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                                                       null: false
+    t.datetime "updated_at",                                                       null: false
+    t.boolean  "in_stock",                                          default: true
   end
 
 end
