@@ -1,11 +1,30 @@
-<h2>Product</h2>
-<h4><%= @product.sale_message%></h4>
-<h4><%= @product.name %></p>
+<h4><%= @product.sale_message %></h4>
+<h2><%= @product.name %></h2>
 <h4>Price <%= number_to_currency(@product.price) %></h4>
 <h4>Tax <%= number_to_currency(@product.tax) %></h4>
 <h4>Total Price <%= number_to_currency(@product.total) %></h4>
 <h4><%= @product.description %></h4>
-<h4><img src="<%= @product.image %>"></h4>
+<% @product.images.each do |image| %>
+<%end%>
+<h4><img src="<%= image.image_url %>"></h4>
+<h4>Supplier: <%= @product.supplier.name%></h4>
+
+<%= form_tag '/orders' method: :post do %>
+<div>
+  <%= label_tag :quantity, %>
+  <%= text_field_tag :quantity %>
+</div>
+
+<div>
+<%= label_tag :product_id %>
+<%= text_field_tag :product_id %>
+</div>
+
+<div>
+<%= link_to "Buy Now!", "/products/#{@product.id}", method: %>
+</div>
+<% end %>
+
 
 <h2><%= link_to "Delete", "/products/#{@product.id}", method: :delete %></h2>
 <h2><%= link_to "Edit", "/products/#{@product.id}", method: :edit %><h2>

@@ -12,6 +12,15 @@ class ProductsController < ApplicationController
     end
   end
 
+  def show
+    if params[:id] == "random"
+      @products = Product.all.sample
+    else
+    id = params[:id]
+    @product = Product.find_by(id: id)
+    end
+  end
+
   def new
   end
   
@@ -20,19 +29,9 @@ class ProductsController < ApplicationController
     price = params[:price]
     image = params[:image]
     description = params[:description]
-    product = Product.create(name: name, price: price, image: image, description: description)
+    product = Product.create(name: name, price: price, image: image, description: description, user_id: current_user.id)
     flash[:success] = "Product Created"
     redirect_to "/products/#{product.id}"
-  end
-
-
-  def show
-    if params[:id] == "random"
-      @products = Product.all.sample
-    else
-    id = params[:id]
-    @product = Product.find_by(id: id)
-    end
   end
 
   def edit
@@ -62,7 +61,7 @@ class ProductsController < ApplicationController
 
   def search
     search_term = params[:search]
-    @products = Product.where("name LIKE ? OR descrion LIKE ?", "%#{search_term}%", "%#{search_term}%")
+    @products = Product.where("name LIKE ? OR descrption LIKE ?", "%#{search_term}%", "%#{search_term}%")
     render :index
   end
 end

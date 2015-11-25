@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
 
-  get '/', to: 'products#index'
+  devise_for :models
+  root to: 'products#index'
   get '/products/new', to: 'products#new'
+  post '/orders' to: 'orders#create'
+  get '/orders/:id', to: 'orders#show'
   post '/products/new', to: 'products#create'
   get '/products/low_to_high', to: 'products#low_to_high'
   get '/products/high_to_low', to: 'products#high_to_low'
-  get '/products/random', to: 'products#random'
+  get '/products/random', to: 'products#show'
   get '/products/:id', to: 'products#show'
   get '/products/:id', to: 'products#edit'
   patch '/products/:id', to: 'products#update'

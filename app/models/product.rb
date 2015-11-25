@@ -1,4 +1,8 @@
 class Product < ActiveRecord::Base
+  belongs_to :supplier
+  has_many :images
+  belongs_to :model
+  has_many :orders
 
   def sale_message   
       if price.to_i < 50
@@ -7,6 +11,7 @@ class Product < ActiveRecord::Base
        return "On sale!"
      end
   end
+
 
   def tax
     tax_price = price.to_i * (0.09)

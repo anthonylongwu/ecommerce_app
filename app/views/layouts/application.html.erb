@@ -38,7 +38,7 @@
             <li><a href="#">Tanks</a></li>
             <li><a href="#">eJuice</a></li>
             <li><a href="http://localhost:3000/?view=discounted">Discounted Items</a></li>
-            <li><a href="#">Random Product</a></li>
+            <li><a href="http://localhost:3000/?view=random">Random Product</a></li>
           </ul>
         </li>
       </ul>
@@ -52,11 +52,15 @@
         <li><a href="http://localhost:3000/?view=random">Random Product</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="Products">
-            <li><a href="#">Mods</a></li>
-            <li><a href="#">Tanks</a></li>
-            <li><a href="#">eJuice</a></li>
-            <li><a href="#">Separated link</a></li>
+          <ul class="Accounts">
+          <% if current_user %>
+            <li><%= link_to "Sign out", "users/sign_out", method: :delete %></li>
+            <li><a><%= current_user.email %> is signed in</a></li>
+            <% else %>
+            <li><%= link_to "Sign up", "users/sign_up" %></li>
+            <li><%= link_to "Sign in", "users/sign_in" %></li>
+            <%end%>
+            
           </ul>
         </li>
       </ul>
