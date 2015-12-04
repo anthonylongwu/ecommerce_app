@@ -1,21 +1,30 @@
+<ul>
+  <% if @product && @product.errors.any? %>
+  <% @product.errors.full_messages.each do |message| %>
+  <li class="bad product"><%= message %></li>
+    <% end %>
+  <% end %>
+</ul>
+
+<h2>Create a new product</h2>
 <%= form_tag '/create', method: :post do %>
 <div>
- <h2> <%= label_tag :name, "enter name of product" %></h2>
-  <%= text_field_tag :name %>
+ <h2> <%= label_tag :name %></h2>
+  <%= text_field_tag :name, @product.name %>
 </div>
 
 <div>
-  <h2><%= label_tag :price, "enter price of product" %></h2>
-  <%= text_field_tag :price %>
+  <h2><%= label_tag :price %></h2>
+  <%= text_field_tag :price, @product.price %>
 </div>
 
 <div>
- <h2><%= label_tag :image, "enter image URL of product" %></h2>
-  <%= text_field_tag :image %>
+ <h2><%= label_tag :image %></h2>
+  <%= text_field_tag :image, @product.image %>
 </div>
 <div>
-  <h2><%= label_tag :description, "enter description of product" %></h2>
-  <%= text_field_tag :description %>
+  <h2><%= label_tag :description %></h2>
+  <%= text_field_tag :description, @product.description %>
 </div>
 
 <div>

@@ -9,22 +9,21 @@
 <h4><img src="<%= image.image_url %>"></h4>
 <h4>Supplier: <%= @product.supplier.name%></h4>
 
-<%= form_tag '/orders' method: :post do %>
+<%= form_tag '/cartedproducts', method: :post do %>
 <div>
   <%= label_tag :quantity, %>
-  <%= text_field_tag :quantity %>
+  <%= text_field_tag :quantity, @carted_product.quantity %>
 </div>
 
 <div>
-<%= label_tag :product_id %>
-<%= text_field_tag :product_id %>
+<%= hidden_field_tag :product_id, @product.id %>
 </div>
 
 <div>
-<%= link_to "Buy Now!", "/products/#{@product.id}", method: %>
+<%= submit_tag "Add To Cart" %>
 </div>
 <% end %>
 
 
 <h2><%= link_to "Delete", "/products/#{@product.id}", method: :delete %></h2>
-<h2><%= link_to "Edit", "/products/#{@product.id}", method: :edit %><h2>
+<h2><%= link_to "Edit", "/products/#{@product.id}/edit", method: :edit %><h2>

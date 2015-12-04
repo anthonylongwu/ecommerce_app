@@ -1,0 +1,33 @@
+<table class="table">
+  <tr>
+    <th>Product Name</th>
+    <th>Quantity</th>
+    <th>Price Per Product</th>
+  </tr>
+  <% @carted_products.each do |carted_product| %>
+  <tr>
+    <td><%= carted_product.product.name %></td>
+    <td><%= carted_product.quantity %></td>
+    <td><%= carted_product.product.price %></td>
+  </tr>
+  <% end %>
+</table>
+
+<table class="table">
+  <tr>
+    <th>Subtotal</th>
+    <th><%= @subtotal %></th>
+  </tr>
+  <tr>
+    <th>Tax</th>
+    <th><%= @tax %></th>
+  </tr>
+    <tr>
+    <th>Total</th>
+    <th><%= @total %></th>
+  </tr>
+  </table>
+
+
+
+<%= link_to "Confirm and buy", "/orders", method: :post %>
