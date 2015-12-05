@@ -28,6 +28,11 @@
 </div>
 
 <div>
+<%= label_tag :supplier %>
+<%= collection_select :supplier, :supplier_id, Supplier.all, :id :name %>
+</div>
+
+<div>
   <%= submit_tag "click here if you're awesome" %>
 </div>
 

@@ -1,0 +1,8 @@
+<h1> Supplier </h1>
+
+<p>Name: <%= @supplier.name %></p>
+<p>Phone: <%= @supplier.phone  %></p>
+<p>Email: <%= @supplier.email %></p>
+<p>Active: <%= @supplier.active %></p>
+
+<%= link_to "Remove Supplier", "/suppliers/#{@supplier.id}", method: :delete %>

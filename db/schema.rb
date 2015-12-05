@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151203025526) do
+ActiveRecord::Schema.define(version: 20151204051149) do
 
   create_table "cagetorized_products", force: :cascade do |t|
     t.datetime "created_at"
@@ -95,8 +95,9 @@ ActiveRecord::Schema.define(version: 20151203025526) do
     t.string   "name",       limit: 255
     t.string   "email",      limit: 255
     t.string   "phone",      limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.boolean  "active",                 default: true
   end
 
 end
