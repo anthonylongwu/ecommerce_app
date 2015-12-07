@@ -34,4 +34,10 @@ class SuppliersController < ApplicationController
     Supplier.find_by(id: params[:id]).update(active: false)
     redirect_to "/suppliers"
   end
+
+  private
+
+  def supplier_params
+    params.require(:supplier).permit(:name, :email, :phone)
+  end
 end

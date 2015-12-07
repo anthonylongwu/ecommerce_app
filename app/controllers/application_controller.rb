@@ -4,26 +4,24 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   private
-
+ 
   def calculate_cart_count
-    if current_user
-      if session[:cart_count]
-        @cart_count = session[:cart_count]
-      else
-        session[:cart_count] = current_user.carted_products.where(status: "carted".count
-      end
+    if session[:cart_count]
+      @cart_count = session[:cart_count]
+    else
+      session[:cart_count] = current_model.carted_products.where(status: "carted".count)
     end
   end
 
   def authenticate_admin!
     flash[:danger] = "What you doin?!"
-    redirect_to "/" unless current_user && current_user.admin?
+    redirect_to "/" unless current_model && current_model.admin?
   end
 
   def calculate_subtotal(carted_products)
     subtotal = 0
     carted_products.each do |carted_product|
-      subtotal += (carted_prouct.price * carted_product.quantity)
+      subtotal += (carted_product.price * carted_product.quantity)
     end
     return subtotal
   end
@@ -35,4 +33,5 @@ class ApplicationController < ActionController::Base
     end
     return tax
   end
+
 end

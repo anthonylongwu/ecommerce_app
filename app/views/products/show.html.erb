@@ -4,24 +4,26 @@
 <h4>Tax <%= number_to_currency(@product.tax) %></h4>
 <h4>Total Price <%= number_to_currency(@product.total) %></h4>
 <h4><%= @product.description %></h4>
+
 <% @product.images.each do |image| %>
+  <h4><img src="<%= image.image_url %>"></h4>
 <%end%>
-<h4><img src="<%= image.image_url %>"></h4>
+
 <h4>Supplier: <%= @product.supplier.name%></h4>
 
 <%= form_tag '/cartedproducts', method: :post do %>
-<div>
+  <div>
   <%= label_tag :quantity, %>
-  <%= text_field_tag :quantity, @carted_product.quantity %>
-</div>
+    <%= text_field_tag :quantity, @carted_product.quantity %>
+  </div>
 
-<div>
-<%= hidden_field_tag :product_id, @product.id %>
-</div>
+  <div>
+    <%= hidden_field_tag :product_id, @product.id %>
+  </div>
 
-<div>
-<%= submit_tag "Add To Cart" %>
-</div>
+  <div>
+    <%= submit_tag "Add To Cart" %>
+  </div>
 <% end %>
 
 

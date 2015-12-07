@@ -1,39 +1,47 @@
 <ul>
   <% if @product && @product.errors.any? %>
-  <% @product.errors.full_messages.each do |message| %>
-  <li class="bad product"><%= message %></li>
+    <% @product.errors.full_messages.each do |message| %>
+      <li class="bad product"><%= message %></li>
     <% end %>
   <% end %>
 </ul>
 
 <h2>Create a new product</h2>
-<%= form_tag '/create', method: :post do %>
+<%= form_for @product do |f| %>
 <div>
- <h2> <%= label_tag :name %></h2>
-  <%= text_field_tag :name, @product.name %>
+ <h2> <%= f.label :name %></h2>
+  <%= f.text_field :name, @product.name %>
 </div>
 
 <div>
-  <h2><%= label_tag :price %></h2>
-  <%= text_field_tag :price, @product.price %>
+  <h2><%= f.label :price %></h2>
+  <%= f.text_field :price, @product.price %>
 </div>
 
 <div>
- <h2><%= label_tag :image %></h2>
-  <%= text_field_tag :image, @product.image %>
+ <h2><%= f.label :image %></h2>
+  <%= f.text_field :image, @product.image %>
 </div>
 <div>
-  <h2><%= label_tag :description %></h2>
-  <%= text_field_tag :description, @product.description %>
-</div>
-
-<div>
-<%= label_tag :supplier %>
-<%= collection_select :supplier, :supplier_id, Supplier.all, :id :name %>
+  <h2><%= f.label :description %></h2>
+  <%= f.text_field :description, @product.description %>
 </div>
 
 <div>
-  <%= submit_tag "click here if you're awesome" %>
+<%= f.label :supplier %>
+<%= f.collection_select :supplier, :supplier_id, Supplier.all, :id :name %>
+</div>
+<div>
+  <%= f.fields_for :images do |ff| %>
+    <div>
+      <%= ff.label :image_url %>
+      <%= ff.text_field :image_url %>
+</div>
+<% end %>
+</div>
+
+<div>
+  <%= f.submit "click here if you're awesome" %>
 </div>
 
 <% end %>
